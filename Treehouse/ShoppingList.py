@@ -1,26 +1,35 @@
 itemList = []
 
-print("What to shop today ?")
-print("Enter SHOW to see current added items in your list")
-print("Enter HELP to see the list of commands")
-print("Enter DONE to stop adding items")
+def show_help():
+	print("What to shop today ?")
+	print("Enter SHOW to see current added items in your list")
+	print("Enter HELP to see the list of commands")
+	print("Enter DONE to stop adding items")
 
-while(True):
+def show_list():
+	print("Here is your list:")
+	for item in itemList:
+		print(item)
+
+def items_added(items):
+	itemList.append(items)
+	print("Added {}. List now has {} items".format(items,len(itemList)))
+
+show_help()
+
+while True:
 	items = str(raw_input("> "))
-	if(items == "DONE"):
+	if items == "DONE":
 		break
-	elif(items == "SHOW"):
-		for item in itemList:
-			print(item)
-	elif(items == "HELP"):
-		print("Enter SHOW to see current added items in your list")
-		print("Enter HELP to see the list of commands")
-		print("Enter DONE to stop adding items")
+	elif items == "SHOW":
+		show_list()
+		continue
+	elif items == "HELP":
+		show_help()
+		continue
 	else:
-		itemList.append(items)
+		items_added(items)
 
-print("Here is your list")
-for item in itemList:
-	print(item)
+show_list()
 
 
