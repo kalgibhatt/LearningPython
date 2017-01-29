@@ -11,6 +11,7 @@ def show_help():
 	print("Enter SHOW to see current added items in your list")
 	print("Enter HELP to see the list of commands")
 	print("Enter DONE to stop adding items")
+	print("Enter REMOVE to remive item from the list")
 
 def show_list():
 	clear_screen()
@@ -38,6 +39,15 @@ def items_added(items):
 		itemList.append(new_item)
 	show_list()
 
+def remove_from_list():
+	show_list()
+	what_to_remove = raw_input("What you want to remove from list ?")
+	try:
+		itemList.remove(what_to_remove)
+	except ValueError:
+		pass
+	show_list()
+
 show_help()
 
 while True:
@@ -49,6 +59,9 @@ while True:
 		continue
 	elif new_item.upper() == "HELP":
 		show_help()
+		continue
+	elif new_item.upper() == "REMOVE":
+		remove_from_list()
 		continue
 	elif new_item == "":
 		print("Enter some item")
